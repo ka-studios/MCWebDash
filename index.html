@@ -1,0 +1,26 @@
+<h1 class="roboto-regular" style="text-align: center;">Welcome to the (WIP) lightweight MC WebDash</h1>
+<h2 class="roboto-regular" style="text-align: center;">
+   <a href='javascript:run()'>Start Server</a>
+</h2>
+<style>
+    .roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+
+<script>
+    function run() {
+    alert('Starting server, please wait')
+    const Http = new XMLHttpRequest();
+    const currentSite = window.location.origin;
+    const url = currentSite + "/start";
+    Http.open("GET", url);
+    Http.send();
+    Http.onreadystatechange = (e) => {
+    alert(Http.responseText)
+    alert('Unless the previous/following pages are errors, you server is now up!')
+                }
+            }
+</script>
