@@ -8,8 +8,14 @@
     <body>
         <h1 class="roboto-regular" style="text-align: center;">Welcome to the (WIP) lightweight MC WebDash</h1>
         <h2 class="roboto-regular" style="text-align: center;">
-        <a href='javascript:run()' class="button">Start Server</a>
-        <a href='javascript:stop()' class="button">Stop Server</a>
+        <a href='javascript:start()' class="button">Start Lobby</a>
+        <a href='javascript:stop()' class="button">Stop Lobby</a>
+        <a href='javascript:start_lifesteal()' style="button">Start LifeSteal</a>
+        <a href='javascript:stop_lifesteal()' style="button">Stop LifeSteal</a>
+        <a href='javascript:start_skyblock()' style="button">Start SkyBlock</a>
+        <a href='javascript:stop_skyblock()' style="button">Stop SkyBlock</a>
+        <a href='javascript:start_pvp()' style="button">Start PVP</a>
+        <a href='javascript:stop_pvp()' style="button">Stop PVP</a>
         <a href="{{ url_for('logout') }}" class="button">Logout</a>
 
         <pre id="output"></pre>
@@ -42,6 +48,144 @@
             function stop() {
             alert('Stopping server, please wait')
             fetch('/stop', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.output) {
+                            document.getElementById('output').textContent = data.output;
+                        } else if (data.error) {
+                            document.getElementById('output').textContent = 'Error: ' + data.error;
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('output').textContent = 'Error: ' + error;
+                        alert('An error occured.')
+                    });
+
+                }
+
+           function start_lifesteal() {
+            alert('Starting server, please wait')
+            fetch('/start_lifesteal', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.output) {
+                            document.getElementById('output').textContent = data.output;
+                        } else if (data.error) {
+                            document.getElementById('output').textContent = 'Error: ' + data.error;
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('output').textContent = 'Error: ' + error;
+                        alert('An error occured.')
+                    });
+
+                }
+
+           function stop_lifesteal() {
+            alert('Starting server, please wait')
+            fetch('/stop_lifesteal', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.output) {
+                            document.getElementById('output').textContent = data.output;
+                        } else if (data.error) {
+                            document.getElementById('output').textContent = 'Error: ' + data.error;
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('output').textContent = 'Error: ' + error;
+                        alert('An error occured.')
+                    });
+
+                }
+
+            function start_skyblock() {
+            alert('Starting server, please wait')
+            fetch('/start_skyblock', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.output) {
+                            document.getElementById('output').textContent = data.output;
+                        } else if (data.error) {
+                            document.getElementById('output').textContent = 'Error: ' + data.error;
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('output').textContent = 'Error: ' + error;
+                        alert('An error occured.')
+                    });
+
+                }
+
+            function stop_skyblock() {
+            alert('Starting server, please wait')
+            fetch('/stop_skyblock', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.output) {
+                            document.getElementById('output').textContent = data.output;
+                        } else if (data.error) {
+                            document.getElementById('output').textContent = 'Error: ' + data.error;
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('output').textContent = 'Error: ' + error;
+                        alert('An error occured.')
+                    });
+
+                }
+
+            function start_pvp() {
+            alert('Starting server, please wait')
+            fetch('/start_pvp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.output) {
+                            document.getElementById('output').textContent = data.output;
+                        } else if (data.error) {
+                            document.getElementById('output').textContent = 'Error: ' + data.error;
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('output').textContent = 'Error: ' + error;
+                        alert('An error occured.')
+                    });
+
+                }
+
+            function stop_pvp() {
+            alert('Starting server, please wait')
+            fetch('/stop_pvp', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

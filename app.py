@@ -48,7 +48,7 @@ def start():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['java -jar /path/to/server.jar'], text=True)
+        output = subprocess.check_output(['java -jar /root/newlobby/server/server.jar'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -59,11 +59,76 @@ def stop():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['killall java'], text=True)
+        output = subprocess.check_output(['kill $(lsof -t -i:95)'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/start_lifesteal', methods=['POST'])
+def start_lifesteal():
+    if 'username' not in session:
+        return render_template('401.html'), 401
+
+    try:
+        output = subprocess.check_output(['java -jar /root/anarchy/server/server.jar'], text=True)
+        return jsonify({'output': output})
+    except FileNotFoundError as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/stop_lifesteal', methods=['POST'])
+def stop_lifesteal():
+    if 'username' not in session:
+        return render_template('401.html'), 401
+
+    try:
+        output = subprocess.check_output(['kill $(lsof -t -i:1)'], text=True)
+        return jsonify({'output': output})
+    except FileNotFoundError as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/start_skyblock', methods=['POST'])
+def start_skyblock():
+    if 'username' not in session:
+        return render_template('401.html'), 401
+
+    try:
+        output = subprocess.check_output(['java -jar /root/skyblock/server/server.jar'], text=True)
+        return jsonify({'output': output})
+    except FileNotFoundError as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/stop_skyblock', methods=['POST'])
+def stop_skyblock():
+    if 'username' not in session:
+        return render_template('401.html'), 401
+
+    try:
+        output = subprocess.check_output(['kill $(lsof -t -i:97)'], text=True)
+        return jsonify({'output': output})
+    except FileNotFoundError as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/start_pvp', methods=['POST'])
+def start_pvp():
+    if 'username' not in session:
+        return render_template('401.html'), 401
+
+    try:
+        output = subprocess.check_output(['java -jar /root/mc/server/server.jar'], text=True)
+        return jsonify({'output': output})
+    except FileNotFoundError as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/stop_pvp', methods=['POST'])
+def stop_pvp():
+    if 'username' not in session:
+        return render_template('401.html'), 401
+
+    try:
+        output = subprocess.check_output(['kill $(lsof -t -i:25565)'], text=True)
+        return jsonify({'output': output})
+    except FileNotFoundError as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.errorhandler(404)
 def page_not_found(e):
