@@ -59,7 +59,7 @@ def stop():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['kill', '$(lsof', '-t', '-i:95)'], text=True)
+        output = subprocess.check_output(['fuser', '-k', '95/tcp', '95/udp'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -81,7 +81,7 @@ def stop_lifesteal():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['kill', '$(lsof', '-t', '-i:1)'], text=True)
+        output = subprocess.check_output(['fuser', '-k', '1/tcp', '1/udp'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -103,7 +103,7 @@ def stop_skyblock():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['kill', '$(lsof', '-t', '-i:97)'], text=True)
+        output = subprocess.check_output(['fuser', '-k', '97/tcp', '97/udp'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -125,7 +125,7 @@ def stop_pvp():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['kill', '$(lsof', '-t', '-i:25565)'], text=True)
+        output = subprocess.check_output(['fuser', '-k', '25565/tcp', '25565/udp'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
