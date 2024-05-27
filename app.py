@@ -48,7 +48,7 @@ def start():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['java -jar /root/newlobby/server/server.jar'], text=True)
+        output = subprocess.check_output(['java', '-jar', '/root/newlobby/server/server.jar'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -59,7 +59,7 @@ def stop():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['kill $(lsof -t -i:95)'], text=True)
+        output = subprocess.check_output(['kill', '$(lsof', '-t', '-i:95)'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -70,7 +70,7 @@ def start_lifesteal():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['java -jar /root/anarchy/server/server.jar'], text=True)
+        output = subprocess.check_output(['java', '-jar', '/root/anarchy/server/server.jar'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -81,7 +81,7 @@ def stop_lifesteal():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['kill $(lsof -t -i:1)'], text=True)
+        output = subprocess.check_output(['kill', '$(lsof', '-t', '-i:1)'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -92,7 +92,7 @@ def start_skyblock():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['java -jar /root/skyblock/server/server.jar'], text=True)
+        output = subprocess.check_output(['java', '-jar', '/root/skyblock/server/server.jar'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -103,7 +103,7 @@ def stop_skyblock():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['kill $(lsof -t -i:97)'], text=True)
+        output = subprocess.check_output(['kill', '$(lsof', '-t', '-i:97)'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -114,7 +114,7 @@ def start_pvp():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['java -jar /root/mc/server/server.jar'], text=True)
+        output = subprocess.check_output(['java', '-jar', '/root/mc/server/server.jar'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
@@ -125,7 +125,7 @@ def stop_pvp():
         return render_template('401.html'), 401
 
     try:
-        output = subprocess.check_output(['kill $(lsof -t -i:25565)'], text=True)
+        output = subprocess.check_output(['kill', '$(lsof', '-t', '-i:25565)'], text=True)
         return jsonify({'output': output})
     except FileNotFoundError as e:
         return jsonify({'error': str(e)}), 500
